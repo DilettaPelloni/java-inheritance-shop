@@ -13,6 +13,7 @@ public class Prodotto {
     private String descrizione;
     private BigDecimal prezzo;
     private BigDecimal iva;
+    private int sconto;
 
     //COSTRUTTORE
     //da dati singoli
@@ -22,6 +23,7 @@ public class Prodotto {
         this.descrizione = descrizione;
         this.prezzo = prezzo;
         this.iva = iva;
+        this.sconto = 2;
     }
     //da prodotto esistente
     public Prodotto(Prodotto prodotto) {
@@ -30,6 +32,7 @@ public class Prodotto {
         this.descrizione = prodotto.descrizione;
         this.prezzo = prodotto.prezzo;
         this.iva = prodotto.iva;
+        this.sconto = 2;
     }
 
     //GETTERS
@@ -60,11 +63,22 @@ public class Prodotto {
     public void setIva(BigDecimal iva) {
         this.iva = iva;
     }
+    public void setSconto(int sconto) {
+        this.sconto = sconto;
+    }
 
     //METODI
     public BigDecimal getPrezzoIvato() {
-        return prezzo.add(prezzo).multiply(iva.divide(new BigDecimal(100)));
+        return prezzo.add(prezzo.multiply(iva.divide(new BigDecimal(100))));
     }
+
+    public BigDecimal getPrezzoScontato() {
+        //applico lo sconto sull'imponibile
+        BigDecimal prezzoScontato = prezzo.subtract(prezzo.multiply(new BigDecimal((double)sconto / 100)));
+        //restituisco il prezzo scontato con l'iva
+        return prezzoScontato.add(prezzoScontato.multiply(iva.divide(new BigDecimal(100))));
+    }
+
     public String getPrezzoFormattato() {
         return new DecimalFormat("###,###.00€").format(prezzo);
     }

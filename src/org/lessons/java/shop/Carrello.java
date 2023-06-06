@@ -3,6 +3,7 @@ package org.lessons.java.shop;
 //IMPORT
 import java.awt.event.TextEvent;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Carrello {
@@ -75,12 +76,25 @@ public class Carrello {
 
         }//chiusura ciclo for
 
-        //stampo il carrello
+        //chiedo all'utente se ha la tessera fedeltà
+        System.out.println("Hai la tessera fedeltà? s/n");
+        boolean fedele = scan.next().toLowerCase().equals("s");
+
+        //stampo il carrello e il suo totale
+        BigDecimal prezzoTotale = new BigDecimal(0);
         System.out.println("Ecco il tuo carrello:");
+
         for (int i = 0; i < carrello.length ; i++) {
             System.out.println((i+1) + "° prodotto:");
             System.out.println(carrello[i].toString());
+            if(fedele) {
+                prezzoTotale = prezzoTotale.add(carrello[i].getPrezzoScontato());
+            } else {
+                prezzoTotale = prezzoTotale.add(carrello[i].getPrezzoIvato());
+            }
         }
+
+        System.out.println("Totale carrello: " + new DecimalFormat("###,###.00€").format(prezzoTotale));
 
         scan.close();
     }

@@ -16,12 +16,15 @@ public class Smartphone extends Prodotto {
         super(nome, descrizione, prezzo, iva);
         this.imei = imei;
         this.memoria = memoria;
+        if(memoria < 32) {
+            super.setSconto(5);
+        }
     }
     //con oggetto esistente
     public Smartphone(Prodotto prodotto, String imei, int memoria) {
         super(prodotto);
         this.imei = imei;
-        this.memoria = memoria;
+        setMemoria(memoria);
     }
 
     //GETTERS
@@ -38,6 +41,9 @@ public class Smartphone extends Prodotto {
     }
     public void setMemoria(int memoria) {
         this.memoria = memoria;
+        if(memoria < 32) {
+            super.setSconto(5);
+        }
     }
 
     //METODI

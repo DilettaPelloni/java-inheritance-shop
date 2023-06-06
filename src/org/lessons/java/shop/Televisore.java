@@ -16,12 +16,15 @@ public class Televisore extends Prodotto{
         super(nome, descrizione, prezzo, iva);
         this.dimensioni = dimensioni;
         this.smart = smart;
+        if(!smart) {
+            super.setSconto(10);
+        }
     }
     //con oggetto esistente
     public Televisore(Prodotto prodotto, int dimensioni, boolean smart) {
         super(prodotto);
         this.dimensioni = dimensioni;
-        this.smart = smart;
+        setSmart(smart);
     }
 
     //GETTERS
@@ -38,6 +41,9 @@ public class Televisore extends Prodotto{
     }
     public void setSmart(boolean smart) {
         this.smart = smart;
+        if(!smart) {
+            super.setSconto(10);
+        }
     }
 
     //METODI

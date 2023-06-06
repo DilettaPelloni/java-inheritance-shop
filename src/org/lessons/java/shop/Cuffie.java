@@ -15,12 +15,15 @@ public class Cuffie extends Prodotto{
         super(nome, descrizione, prezzo, iva);
         this.colore = colore;
         this.wireless = wireless;
+        if(!wireless) {
+            super.setSconto(7);
+        }
     }
     //con oggetto esistente
     public Cuffie(Prodotto prodotto, String colore, boolean wireless) {
         super(prodotto);
         this.colore = colore;
-        this.wireless = wireless;
+        setWireless(wireless);
     }
 
     //GETTERS
@@ -37,11 +40,12 @@ public class Cuffie extends Prodotto{
     }
     public void setWireless(boolean wireless) {
         this.wireless = wireless;
+        if(!wireless) {
+            super.setSconto(7);
+        }
     }
 
     //METODI
-
-
     @Override
     public String toString() {
         return super.toString() + ", colore= " + colore + ", wireless= " + (wireless ? "si" : "no");
