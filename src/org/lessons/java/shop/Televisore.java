@@ -15,10 +15,7 @@ public class Televisore extends Prodotto{
     public Televisore(String nome, String descrizione, BigDecimal prezzo, BigDecimal iva, int dimensioni, boolean smart) {
         super(nome, descrizione, prezzo, iva);
         this.dimensioni = dimensioni;
-        this.smart = smart;
-        if(!smart) {
-            super.setSconto(10);
-        }
+        setSmart(smart);
     }
     //con oggetto esistente
     public Televisore(Prodotto prodotto, int dimensioni, boolean smart) {

@@ -14,10 +14,7 @@ public class Cuffie extends Prodotto{
     public Cuffie(String nome, String descrizione, BigDecimal prezzo, BigDecimal iva, String colore, boolean wireless) {
         super(nome, descrizione, prezzo, iva);
         this.colore = colore;
-        this.wireless = wireless;
-        if(!wireless) {
-            super.setSconto(7);
-        }
+        setWireless(wireless);
     }
     //con oggetto esistente
     public Cuffie(Prodotto prodotto, String colore, boolean wireless) {

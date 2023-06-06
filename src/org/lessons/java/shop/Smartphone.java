@@ -15,10 +15,7 @@ public class Smartphone extends Prodotto {
     public Smartphone(String nome, String descrizione, BigDecimal prezzo, BigDecimal iva, String imei, int memoria) {
         super(nome, descrizione, prezzo, iva);
         this.imei = imei;
-        this.memoria = memoria;
-        if(memoria < 32) {
-            super.setSconto(5);
-        }
+        setMemoria(memoria);
     }
     //con oggetto esistente
     public Smartphone(Prodotto prodotto, String imei, int memoria) {
