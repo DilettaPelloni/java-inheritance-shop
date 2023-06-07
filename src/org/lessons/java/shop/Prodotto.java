@@ -45,7 +45,7 @@ public class Prodotto {
     public BigDecimal getPrezzo() {
         return prezzo;
     }
-    public String getIva() {return iva + "%";}
+    public String getIva() {return iva;}
 
     //SETTERS
     public void setNome(String nome) {
@@ -91,7 +91,7 @@ public class Prodotto {
                 ", nome= " + nome +
                 ", descrizione= " + descrizione +
                 ", prezzo= " + getPrezzoFormattato() +
-                ", iva= " + getIva();
+                ", iva= " + getIva() +  "%";
     }
 
     private int generateCode(){
