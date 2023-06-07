@@ -91,7 +91,7 @@ public class Prodotto {
                 ", nome= " + nome +
                 ", descrizione= " + descrizione +
                 ", prezzo= " + getPrezzoFormattato() +
-                ", iva= " + getIva() +  "%";
+                ", iva= " + iva +  "%";
     }
 
     private int generateCode(){
