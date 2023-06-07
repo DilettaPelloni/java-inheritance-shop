@@ -15,13 +15,13 @@ public class Televisore extends Prodotto{
     public Televisore(String nome, String descrizione, BigDecimal prezzo, BigDecimal iva, int dimensioni, boolean smart) {
         super(nome, descrizione, prezzo, iva);
         this.dimensioni = dimensioni;
-        setSmart(smart);
+        this.smart = smart;
     }
     //con oggetto esistente
     public Televisore(Prodotto prodotto, int dimensioni, boolean smart) {
         super(prodotto);
         this.dimensioni = dimensioni;
-        setSmart(smart);
+        this.smart = smart;
     }
 
     //GETTERS
@@ -36,16 +36,16 @@ public class Televisore extends Prodotto{
     public void setDimensioni(int dimensioni) {
         this.dimensioni = dimensioni;
     }
-    public void setSmart(boolean smart) {
-        this.smart = smart;
-        if(!smart) {
-            super.setSconto(10);
-        }
-    }
+    public void setSmart(boolean smart) { this.smart = smart; }
 
     //METODI
     @Override
     public String toString() {
         return super.toString() + ", dimensioni= " + dimensioni + ", smart= " + (smart ? "si" : "no");
+    }
+
+    @Override
+    protected int getSconto() {
+        return (!smart) ? 10 : super.getSconto();
     }
 }
