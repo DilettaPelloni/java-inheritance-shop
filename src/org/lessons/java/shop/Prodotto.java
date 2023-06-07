@@ -45,7 +45,7 @@ public class Prodotto {
     public BigDecimal getPrezzo() {
         return prezzo;
     }
-    public String getIva() {return iva;}
+    public BigDecimal getIva() {return iva;}
 
     //SETTERS
     public void setNome(String nome) {
